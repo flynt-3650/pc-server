@@ -7,6 +7,7 @@ import ru.flynt3650.pc_server.models.Pc;
 import ru.flynt3650.pc_server.repositories.PcRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -21,5 +22,13 @@ public class PcService {
 
     public List<Pc> findAll() {
         return pcRepository.findAll();
+    }
+
+    public Pc findById(Integer id) {
+        Optional<Pc> pc = pcRepository.findById(id);
+        if (pc.isPresent()) {
+            return pc.get();
+        }
+        throw new RuntimeException("PC's ID not found.");
     }
 }
