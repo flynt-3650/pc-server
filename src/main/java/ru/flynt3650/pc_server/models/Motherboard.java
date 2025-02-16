@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -11,6 +11,10 @@ public class Motherboard {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "model")
+    @NotNull
+    private String model;
 
     @Column(name = "form_factor")
     @NotNull
@@ -74,6 +78,14 @@ public class Motherboard {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getFormFactor() {
@@ -160,6 +172,7 @@ public class Motherboard {
     public String toString() {
         return "Motherboard{" +
                 "id=" + id +
+                ", model='" + model + '\'' +
                 ", formFactor='" + formFactor + '\'' +
                 ", socket='" + socket + '\'' +
                 ", chipset='" + chipset + '\'' +

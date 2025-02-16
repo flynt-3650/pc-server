@@ -1,7 +1,6 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -65,7 +64,7 @@ public class Pc {
     }
 
     public Pc(String name, Cpu cpu, Gpu gpu, Motherboard motherboard, Ram ram, Ssd ssd, Hdd hdd, Psu psu,
-              Casing casing, CoolingSystem coolingSystem, Networking networking, Instant createdAt) {
+              Casing casing, CoolingSystem coolingSystem, Networking networking, LocalDateTime createdAt) {
         this.name = name;
         this.cpu = cpu;
         this.gpu = gpu;
@@ -176,11 +175,11 @@ public class Pc {
         this.networking = networking;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

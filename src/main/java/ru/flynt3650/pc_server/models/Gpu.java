@@ -1,10 +1,8 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
-import java.util.Objects;
 
 @Entity
 @Table(name = "gpu")
@@ -18,6 +16,10 @@ public class Gpu {
     @Column(name = "make")
     @NotNull
     private String make;
+
+    @Column(name = "model")
+    @NotNull
+    private String model;
 
     @Column(name = "vram_size")
     @NotNull
@@ -58,8 +60,10 @@ public class Gpu {
     public Gpu() {
     }
 
-    public Gpu(String make, int vramSize, int clockSpeed, int memBusWidth, boolean hasHdmi, boolean hasDp, boolean hasUsbc, boolean hasDvi, boolean hasVga, int powerConsumption) {
+    public Gpu(String make, String model, int vramSize, int clockSpeed, int memBusWidth, boolean hasHdmi,
+               boolean hasDp, boolean hasUsbc, boolean hasDvi, boolean hasVga, int powerConsumption) {
         this.make = make;
+        this.model = model;
         this.vramSize = vramSize;
         this.clockSpeed = clockSpeed;
         this.memBusWidth = memBusWidth;
@@ -85,6 +89,14 @@ public class Gpu {
 
     public void setMake(String make) {
         this.make = make;
+    }
+
+    public @NotNull String getModel() {
+        return model;
+    }
+
+    public void setModel(@NotNull String model) {
+        this.model = model;
     }
 
     public int getVramSize() {
@@ -164,6 +176,7 @@ public class Gpu {
         return "Gpu{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", vramSize=" + vramSize +
                 ", clockSpeed=" + clockSpeed +
                 ", memBusWidth=" + memBusWidth +

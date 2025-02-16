@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -42,7 +42,8 @@ public class CoolingSystem {
 
     public CoolingSystem() {}
 
-    public CoolingSystem(String make, String type, String fanSize, String radiatorSize, String noiseLevel, String socketCompatibility, int tdpSupport, boolean includesRgb) {
+    public CoolingSystem(String make, String type, String fanSize, String radiatorSize, String noiseLevel,
+                         String socketCompatibility, int tdpSupport, boolean includesRgb) {
         this.make = make;
         this.type = type;
         this.fanSize = fanSize;

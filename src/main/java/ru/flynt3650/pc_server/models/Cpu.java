@@ -1,9 +1,7 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
-import java.util.Objects;
 
 @Entity
 @Table(name = "cpu")
@@ -17,6 +15,10 @@ public class Cpu {
     @Column(name = "make")
     @NotNull
     private String make;
+
+    @Column(name = "model")
+    @NotNull
+    private String model;
 
     @Column(name = "core_amount")
     @NotNull
@@ -48,9 +50,10 @@ public class Cpu {
     public Cpu() {
     }
 
-    public Cpu(String make, int coreAmount, int threadAmount, double clockSpeed, double l3Size,
+    public Cpu(String make, String model, int coreAmount, int threadAmount, double clockSpeed, double l3Size,
                String socket, String igpu, int tdp) {
         this.make = make;
+        this.model = model;
         this.coreAmount = coreAmount;
         this.threadAmount = threadAmount;
         this.clockSpeed = clockSpeed;
@@ -59,7 +62,6 @@ public class Cpu {
         this.igpu = igpu;
         this.tdp = tdp;
     }
-
 
     public int getId() {
         return id;
@@ -75,6 +77,14 @@ public class Cpu {
 
     public void setMake(String make) {
         this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getCoreAmount() {
@@ -138,6 +148,7 @@ public class Cpu {
         return "Cpu{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", coreAmount=" + coreAmount +
                 ", threadAmount=" + threadAmount +
                 ", clockSpeed=" + clockSpeed +

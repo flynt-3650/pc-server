@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -16,13 +16,17 @@ public class Networking {
     @NotNull
     private String make;
 
+    @Column(name = "model")
+    @NotNull
+    private String model;
+
     @Column(name = "type")
     @NotNull
     private String type;
 
-    @Column(name = "interface_type")
+    @Column(name = "connection_interface")
     @NotNull
-    private String interfaceType;
+    private String connectionInterface;
 
     @Column(name = "wifi_standard")
     private String wifiStandard;
@@ -38,10 +42,12 @@ public class Networking {
 
     public Networking() {}
 
-    public Networking(String make, String type, String interfaceType, String wifiStandard, String ethernetSpeed, int antennas, String bluetoothVersion) {
+    public Networking(String make, String model, String type, String connectionInterface, String wifiStandard,
+                      String ethernetSpeed, int antennas, String bluetoothVersion) {
         this.make = make;
+        this.model = model;
         this.type = type;
-        this.interfaceType = interfaceType;
+        this.connectionInterface = connectionInterface;
         this.wifiStandard = wifiStandard;
         this.ethernetSpeed = ethernetSpeed;
         this.antennas = antennas;
@@ -64,6 +70,14 @@ public class Networking {
         this.make = make;
     }
 
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public String getType() {
         return type;
     }
@@ -72,12 +86,12 @@ public class Networking {
         this.type = type;
     }
 
-    public String getInterfaceType() {
-        return interfaceType;
+    public String getConnectionInterface() {
+        return connectionInterface;
     }
 
-    public void setInterfaceType(String interfaceType) {
-        this.interfaceType = interfaceType;
+    public void setConnectionInterface(String connectionInterface) {
+        this.connectionInterface = connectionInterface;
     }
 
     public String getWifiStandard() {
@@ -117,8 +131,9 @@ public class Networking {
         return "Networking{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
-                ", interfaceType='" + interfaceType + '\'' +
+                ", connectionInterface='" + connectionInterface + '\'' +
                 ", wifiStandard='" + wifiStandard + '\'' +
                 ", ethernetSpeed='" + ethernetSpeed + '\'' +
                 ", antennas=" + antennas +

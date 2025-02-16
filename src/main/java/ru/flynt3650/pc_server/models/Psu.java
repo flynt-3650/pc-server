@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -15,6 +15,10 @@ public class Psu {
     @Column(name = "make")
     @NotNull
     private String make;
+
+    @Column(name = "model")
+    @NotNull
+    private String model;
 
     @Column(name = "wattage")
     @NotNull
@@ -39,8 +43,10 @@ public class Psu {
 
     public Psu() {}
 
-    public Psu(String make, int wattage, String efficiencyRating, String modularity, String connectors, String fanSize, String coolingType) {
+    public Psu(String make, String model, int wattage, String efficiencyRating, String modularity, String connectors,
+               String fanSize, String coolingType) {
         this.make = make;
+        this.model = model;
         this.wattage = wattage;
         this.efficiencyRating = efficiencyRating;
         this.modularity = modularity;
@@ -63,6 +69,14 @@ public class Psu {
 
     public void setMake(String make) {
         this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getWattage() {
@@ -118,6 +132,7 @@ public class Psu {
         return "Psu{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", wattage=" + wattage +
                 ", efficiencyRating='" + efficiencyRating + '\'' +
                 ", modularity='" + modularity + '\'' +

@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +16,10 @@ public class Casing {
     @NotNull
     private String make;
 
+    @Column(name = "model")
+    @NotNull
+    private String model;
+
     @Column(name = "form_factor")
     @NotNull
     private String formFactor;
@@ -30,10 +34,10 @@ public class Casing {
     @NotNull
     private int expansionSlots;
 
-    @Column(name = "drive_bays35")
+    @Column(name = "drive_bays_35")
     private int driveBays35;
 
-    @Column(name = "drive_bays25")
+    @Column(name = "drive_bays_25")
     private int driveBays25;
 
     @Column(name = "front_panel_ports")
@@ -45,8 +49,10 @@ public class Casing {
 
     public Casing() {}
 
-    public Casing(String make, String formFactor, String material, String coolingSupport, int expansionSlots, int driveBays35, int driveBays25, String frontPanelPorts, boolean includesRgb) {
+    public Casing(String make, String model, String formFactor, String material, String coolingSupport,
+                  int expansionSlots, int driveBays35, int driveBays25, String frontPanelPorts, boolean includesRgb) {
         this.make = make;
+        this.model = model;
         this.formFactor = formFactor;
         this.material = material;
         this.coolingSupport = coolingSupport;
@@ -71,6 +77,14 @@ public class Casing {
 
     public void setMake(String make) {
         this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getFormFactor() {
@@ -142,6 +156,7 @@ public class Casing {
         return "Casing{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", formFactor='" + formFactor + '\'' +
                 ", material='" + material + '\'' +
                 ", coolingSupport='" + coolingSupport + '\'' +

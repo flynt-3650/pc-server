@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +16,10 @@ public class Hdd {
     @NotNull
     private String make;
 
+    @Column(name = "model")
+    @NotNull
+    private String model;
+
     @Column(name = "capacity")
     @NotNull
     private int capacity;
@@ -32,19 +36,20 @@ public class Hdd {
     @NotNull
     private String formFactor;
 
-    @Column(name = "interface_type")
+    @Column(name = "connection_interface")
     @NotNull
-    private String interfaceType;
+    private String connectionInterface;
 
     public Hdd() {}
 
-    public Hdd(String make, int capacity, int rpm, int cacheSize, String formFactor, String interfaceType) {
+    public Hdd(String make, String model, int capacity, int rpm, int cacheSize, String formFactor, String connectionInterface) {
         this.make = make;
+        this.model = model;
         this.capacity = capacity;
         this.rpm = rpm;
         this.cacheSize = cacheSize;
         this.formFactor = formFactor;
-        this.interfaceType = interfaceType;
+        this.connectionInterface = connectionInterface;
     }
 
     public int getId() {
@@ -61,6 +66,14 @@ public class Hdd {
 
     public void setMake(String make) {
         this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getCapacity() {
@@ -95,12 +108,12 @@ public class Hdd {
         this.formFactor = formFactor;
     }
 
-    public String getInterfaceType() {
-        return interfaceType;
+    public String getConnectionInterface() {
+        return connectionInterface;
     }
 
-    public void setInterfaceType(String interfaceType) {
-        this.interfaceType = interfaceType;
+    public void setConnectionInterface(String connectionInterface) {
+        this.connectionInterface = connectionInterface;
     }
 
     @Override
@@ -108,11 +121,12 @@ public class Hdd {
         return "Hdd{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", capacity=" + capacity +
                 ", rpm=" + rpm +
                 ", cacheSize=" + cacheSize +
                 ", formFactor='" + formFactor + '\'' +
-                ", interfaceType='" + interfaceType + '\'' +
+                ", connectionInterface='" + connectionInterface + '\'' +
                 '}';
     }
 }

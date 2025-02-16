@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +16,10 @@ public class Ram {
     @NotNull
     private String make;
 
+    @Column(name = "model")
+    @NotNull
+    private String model;
+
     @Column(name = "capacity")
     @NotNull
     private int capacity;
@@ -24,9 +28,9 @@ public class Ram {
     @NotNull
     private int amount;
 
-    @Column(name = "type")
+    @Column(name = "ram_type")
     @NotNull
-    private String type;
+    private String ramType;
 
     @Column(name = "clock")
     @NotNull
@@ -35,12 +39,21 @@ public class Ram {
     public Ram() {
     }
 
-    public Ram(String make, int capacity, int amount, String type, int clock) {
+    public Ram(String make, String model, int capacity, int amount, String ramType, int clock) {
         this.make = make;
+        this.model = model;
         this.capacity = capacity;
         this.amount = amount;
-        this.type = type;
+        this.ramType = ramType;
         this.clock = clock;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getId() {
@@ -75,12 +88,12 @@ public class Ram {
         this.amount = amount;
     }
 
-    public String getType() {
-        return type;
+    public String getRamType() {
+        return ramType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setRamType(String ramType) {
+        this.ramType = ramType;
     }
 
     public int getClock() {
@@ -96,9 +109,10 @@ public class Ram {
         return "Ram{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", capacity=" + capacity +
                 ", amount=" + amount +
-                ", type='" + type + '\'' +
+                ", ramType='" + ramType + '\'' +
                 ", clock=" + clock +
                 '}';
     }

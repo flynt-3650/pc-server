@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.model;
+package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -15,6 +15,10 @@ public class Ssd {
     @Column(name = "make")
     @NotNull
     private String make;
+
+    @Column(name = "model")
+    @NotNull
+    private String model;
 
     @Column(name = "capacity")
     @NotNull
@@ -45,8 +49,10 @@ public class Ssd {
 
     public Ssd() {}
 
-    public Ssd(String make, int capacity, String type, String formFactor, String connectionInterface, int readSpeed, int writeSpeed, int tbw) {
+    public Ssd(String make, String model, int capacity, String type, String formFactor,
+               String connectionInterface, int readSpeed, int writeSpeed, int tbw) {
         this.make = make;
+        this.model = model;
         this.capacity = capacity;
         this.type = type;
         this.formFactor = formFactor;
@@ -70,6 +76,14 @@ public class Ssd {
 
     public void setMake(String make) {
         this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getCapacity() {
@@ -133,6 +147,7 @@ public class Ssd {
         return "Ssd{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", capacity=" + capacity +
                 ", type='" + type + '\'' +
                 ", formFactor='" + formFactor + '\'' +
