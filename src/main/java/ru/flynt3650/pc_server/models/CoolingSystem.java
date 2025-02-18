@@ -16,6 +16,10 @@ public class CoolingSystem {
     @NotNull
     private String make;
 
+    @Column(name = "model")
+    @NotNull
+    private String model;
+
     @Column(name = "type")
     @NotNull
     private String type;
@@ -64,6 +68,14 @@ public class CoolingSystem {
 
     public String getMake() {
         return make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public void setMake(String make) {
@@ -131,6 +143,7 @@ public class CoolingSystem {
         return "CoolingSystem{" +
                 "id=" + id +
                 ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
                 ", type='" + type + '\'' +
                 ", fanSize='" + fanSize + '\'' +
                 ", radiatorSize='" + radiatorSize + '\'' +

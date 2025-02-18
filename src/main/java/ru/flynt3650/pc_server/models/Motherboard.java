@@ -12,6 +12,10 @@ public class Motherboard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "make")
+    @NotNull
+    private String make;
+
     @Column(name = "model")
     @NotNull
     private String model;
@@ -78,6 +82,14 @@ public class Motherboard {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public @NotNull String getMake() {
+        return make;
+    }
+
+    public void setMake(@NotNull String make) {
+        this.make = make;
     }
 
     public String getModel() {
@@ -169,9 +181,10 @@ public class Motherboard {
     }
 
     @Override
-    public String toString() {
+    public String   toString() {
         return "Motherboard{" +
                 "id=" + id +
+                ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
                 ", formFactor='" + formFactor + '\'' +
                 ", socket='" + socket + '\'' +
