@@ -35,17 +35,19 @@ public class PcService {
     }
 
     @Transactional
-    public ResponseEntity<HttpStatus> save(Pc pc) {
+    public void save(Pc pc) {
+
+        System.out.println(pc);
         if (pc != null) {
             pcRepository.save(pc);
-            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            throw new RuntimeException("PC is null.");
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
 
     @Transactional
-    public ResponseEntity<HttpStatus> update(Pc newPc, Integer id) {
+    public void update(Pc newPc, Integer id) {
         Pc pc = findById(id);
 
         pc.setName(newPc.getName());
@@ -59,14 +61,11 @@ public class PcService {
         pc.setCasing(newPc.getCasing());
         pc.setCoolingSystem(newPc.getCoolingSystem());
         pc.setNetworking(newPc.getNetworking());
-
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Transactional
-    public ResponseEntity<HttpStatus> delete(Integer id) {
+    public void delete(Integer id) {
         pcRepository.delete(findById(id));
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

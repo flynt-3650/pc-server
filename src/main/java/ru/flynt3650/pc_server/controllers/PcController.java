@@ -31,7 +31,20 @@ public class PcController {
     }
 
     @PatchMapping("/update/{id}")
-    public ResponseEntity<HttpStatus> patchPc(@RequestBody Pc newPc, @PathVariable Integer id) {
-        return pcService.update(newPc, id);
+    public ResponseEntity<HttpStatus> patchPc(@RequestBody Pc newPc, @PathVariable("id") Integer id) {
+        pcService.update(newPc, id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<HttpStatus> postPc(@RequestBody Pc newPc) {
+        pcService.save(newPc);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<HttpStatus> deletePc(@PathVariable("id") Integer id) {
+        pcService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
