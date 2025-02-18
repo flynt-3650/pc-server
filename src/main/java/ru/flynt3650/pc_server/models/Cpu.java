@@ -2,9 +2,15 @@ package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 @Entity
 @Table(name = "cpu")
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class Cpu {
 
     @Id
@@ -46,116 +52,4 @@ public class Cpu {
     @Column(name = "tdp")
     @NotNull
     private int tdp;
-
-    public Cpu() {
-    }
-
-    public Cpu(String make, String model, int coreAmount, int threadAmount, double clockSpeed, double l3Size,
-               String socket, String igpu, int tdp) {
-        this.make = make;
-        this.model = model;
-        this.coreAmount = coreAmount;
-        this.threadAmount = threadAmount;
-        this.clockSpeed = clockSpeed;
-        this.l3Size = l3Size;
-        this.socket = socket;
-        this.igpu = igpu;
-        this.tdp = tdp;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getCoreAmount() {
-        return coreAmount;
-    }
-
-    public void setCoreAmount(int coreAmount) {
-        this.coreAmount = coreAmount;
-    }
-
-    public int getThreadAmount() {
-        return threadAmount;
-    }
-
-    public void setThreadAmount(int threadAmount) {
-        this.threadAmount = threadAmount;
-    }
-
-    public double getClockSpeed() {
-        return clockSpeed;
-    }
-
-    public void setClockSpeed(double clockSpeed) {
-        this.clockSpeed = clockSpeed;
-    }
-
-    public double getL3Size() {
-        return l3Size;
-    }
-
-    public void setL3Size(double l3Size) {
-        this.l3Size = l3Size;
-    }
-
-    public String getSocket() {
-        return socket;
-    }
-
-    public void setSocket(String socket) {
-        this.socket = socket;
-    }
-
-    public String getIgpu() {
-        return igpu;
-    }
-
-    public void setIgpu(String igpu) {
-        this.igpu = igpu;
-    }
-
-    public int getTdp() {
-        return tdp;
-    }
-
-    public void setTdp(int tdp) {
-        this.tdp = tdp;
-    }
-
-    @Override
-    public String toString() {
-        return "Cpu{" +
-                "id=" + id +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", coreAmount=" + coreAmount +
-                ", threadAmount=" + threadAmount +
-                ", clockSpeed=" + clockSpeed +
-                ", l3Size=" + l3Size +
-                ", socket='" + socket + '\'' +
-                ", igpu='" + igpu + '\'' +
-                ", tdp=" + tdp +
-                '}';
-    }
 }

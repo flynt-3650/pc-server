@@ -1,10 +1,19 @@
 package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.proxy.HibernateProxy;
+
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "pc")
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class Pc {
 
     @Id
@@ -58,145 +67,29 @@ public class Pc {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    public Pc() {
-    }
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
 
-    public Pc(String name, Cpu cpu, Gpu gpu, Motherboard motherboard, Ram ram, Ssd ssd, Hdd hdd, Psu psu,
-              Casing casing, CoolingSystem coolingSystem, Networking networking, LocalDateTime createdAt) {
-        this.name = name;
-        this.cpu = cpu;
-        this.gpu = gpu;
-        this.motherboard = motherboard;
-        this.ram = ram;
-        this.ssd = ssd;
-        this.hdd = hdd;
-        this.psu = psu;
-        this.casing = casing;
-        this.coolingSystem = coolingSystem;
-        this.networking = networking;
-        this.createdAt = createdAt;
-    }
+        if (o == null) return false;
 
-    public int getId() {
-        return id;
-    }
+        Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy
+                .getHibernateLazyInitializer()
+                .getPersistentClass() : o.getClass();
+        Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy
+                .getHibernateLazyInitializer()
+                .getPersistentClass() : this.getClass();
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Cpu getCpu() {
-        return cpu;
-    }
-
-    public void setCpu(Cpu cpu) {
-        this.cpu = cpu;
-    }
-
-    public Gpu getGpu() {
-        return gpu;
-    }
-
-    public void setGpu(Gpu gpu) {
-        this.gpu = gpu;
-    }
-
-    public Motherboard getMotherboard() {
-        return motherboard;
-    }
-
-    public void setMotherboard(Motherboard motherboard) {
-        this.motherboard = motherboard;
-    }
-
-    public Ram getRam() {
-        return ram;
-    }
-
-    public void setRam(Ram ram) {
-        this.ram = ram;
-    }
-
-    public Ssd getSsd() {
-        return ssd;
-    }
-
-    public void setSsd(Ssd ssd) {
-        this.ssd = ssd;
-    }
-
-    public Hdd getHdd() {
-        return hdd;
-    }
-
-    public void setHdd(Hdd hdd) {
-        this.hdd = hdd;
-    }
-
-    public Psu getPsu() {
-        return psu;
-    }
-
-    public void setPsu(Psu psu) {
-        this.psu = psu;
-    }
-
-    public Casing getCasing() {
-        return casing;
-    }
-
-    public void setCasing(Casing casing) {
-        this.casing = casing;
-    }
-
-    public CoolingSystem getCoolingSystem() {
-        return coolingSystem;
-    }
-
-    public void setCoolingSystem(CoolingSystem coolingSystem) {
-        this.coolingSystem = coolingSystem;
-    }
-
-    public Networking getNetworking() {
-        return networking;
-    }
-
-    public void setNetworking(Networking networking) {
-        this.networking = networking;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+        if (thisEffectiveClass != oEffectiveClass) return false;
+        Pc pc = (Pc) o;
+        return getId() != null && Objects.equals(getId(), pc.getId());
     }
 
     @Override
-    public String toString() {
-        return "Pc{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", cpu=" + cpu +
-                ", gpu=" + gpu +
-                ", motherboard=" + motherboard +
-                ", ram=" + ram +
-                ", ssd=" + ssd +
-                ", hdd=" + hdd +
-                ", psu=" + psu +
-                ", casing=" + casing +
-                ", coolingSystem=" + coolingSystem +
-                ", networking=" + networking +
-                ", createdAt=" + createdAt +
-                '}';
+    public final int hashCode() {
+        return this instanceof HibernateProxy proxy ? proxy
+                .getHibernateLazyInitializer()
+                .getPersistentClass()
+                .hashCode() : getClass().hashCode();
     }
 }

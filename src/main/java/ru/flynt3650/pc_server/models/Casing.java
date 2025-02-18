@@ -2,9 +2,16 @@ package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
+
 
 @Entity
 @Table(name = "casing")
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class Casing {
 
     @Id
@@ -46,125 +53,4 @@ public class Casing {
     @Column(name = "includes_rgb")
     @NotNull
     private boolean includesRgb;
-
-    public Casing() {}
-
-    public Casing(String make, String model, String formFactor, String material, String coolingSupport,
-                  int expansionSlots, int driveBays35, int driveBays25, String frontPanelPorts, boolean includesRgb) {
-        this.make = make;
-        this.model = model;
-        this.formFactor = formFactor;
-        this.material = material;
-        this.coolingSupport = coolingSupport;
-        this.expansionSlots = expansionSlots;
-        this.driveBays35 = driveBays35;
-        this.driveBays25 = driveBays25;
-        this.frontPanelPorts = frontPanelPorts;
-        this.includesRgb = includesRgb;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getFormFactor() {
-        return formFactor;
-    }
-
-    public void setFormFactor(String formFactor) {
-        this.formFactor = formFactor;
-    }
-
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
-    }
-
-    public String getCoolingSupport() {
-        return coolingSupport;
-    }
-
-    public void setCoolingSupport(String coolingSupport) {
-        this.coolingSupport = coolingSupport;
-    }
-
-    public int getExpansionSlots() {
-        return expansionSlots;
-    }
-
-    public void setExpansionSlots(int expansionSlots) {
-        this.expansionSlots = expansionSlots;
-    }
-
-    public int getDriveBays35() {
-        return driveBays35;
-    }
-
-    public void setDriveBays35(int driveBays35) {
-        this.driveBays35 = driveBays35;
-    }
-
-    public int getDriveBays25() {
-        return driveBays25;
-    }
-
-    public void setDriveBays25(int driveBays25) {
-        this.driveBays25 = driveBays25;
-    }
-
-    public String getFrontPanelPorts() {
-        return frontPanelPorts;
-    }
-
-    public void setFrontPanelPorts(String frontPanelPorts) {
-        this.frontPanelPorts = frontPanelPorts;
-    }
-
-    public boolean isIncludesRgb() {
-        return includesRgb;
-    }
-
-    public void setIncludesRgb(boolean includesRgb) {
-        this.includesRgb = includesRgb;
-    }
-
-    @Override
-    public String toString() {
-        return "Casing{" +
-                "id=" + id +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", formFactor='" + formFactor + '\'' +
-                ", material='" + material + '\'' +
-                ", coolingSupport='" + coolingSupport + '\'' +
-                ", expansionSlots=" + expansionSlots +
-                ", driveBays35=" + driveBays35 +
-                ", driveBays25=" + driveBays25 +
-                ", frontPanelPorts='" + frontPanelPorts + '\'' +
-                ", includesRgb=" + includesRgb +
-                '}';
-    }
 }

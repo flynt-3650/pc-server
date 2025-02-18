@@ -2,9 +2,15 @@ package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 @Entity
 @Table(name = "ssd")
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 public class Ssd {
 
     @Id
@@ -46,115 +52,4 @@ public class Ssd {
 
     @Column(name = "tbw")
     private int tbw;
-
-    public Ssd() {}
-
-    public Ssd(String make, String model, int capacity, String type, String formFactor,
-               String connectionInterface, int readSpeed, int writeSpeed, int tbw) {
-        this.make = make;
-        this.model = model;
-        this.capacity = capacity;
-        this.type = type;
-        this.formFactor = formFactor;
-        this.connectionInterface = connectionInterface;
-        this.readSpeed = readSpeed;
-        this.writeSpeed = writeSpeed;
-        this.tbw = tbw;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getMake() {
-        return make;
-    }
-
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getFormFactor() {
-        return formFactor;
-    }
-
-    public void setFormFactor(String formFactor) {
-        this.formFactor = formFactor;
-    }
-
-    public String getConnectionInterface() {
-        return connectionInterface;
-    }
-
-    public void setConnectionInterface(String connectionInterface) {
-        this.connectionInterface = connectionInterface;
-    }
-
-    public int getReadSpeed() {
-        return readSpeed;
-    }
-
-    public void setReadSpeed(int readSpeed) {
-        this.readSpeed = readSpeed;
-    }
-
-    public int getWriteSpeed() {
-        return writeSpeed;
-    }
-
-    public void setWriteSpeed(int writeSpeed) {
-        this.writeSpeed = writeSpeed;
-    }
-
-    public int getTbw() {
-        return tbw;
-    }
-
-    public void setTbw(int tbw) {
-        this.tbw = tbw;
-    }
-
-    @Override
-    public String toString() {
-        return "Ssd{" +
-                "id=" + id +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", capacity=" + capacity +
-                ", type='" + type + '\'' +
-                ", formFactor='" + formFactor + '\'' +
-                ", connectionInterface='" + connectionInterface + '\'' +
-                ", readSpeed=" + readSpeed +
-                ", writeSpeed=" + writeSpeed +
-                ", tbw=" + tbw +
-                '}';
-    }
 }
