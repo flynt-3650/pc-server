@@ -9,11 +9,10 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "pc")
-@NoArgsConstructor
-@AllArgsConstructor
-@Setter
 @Getter
+@Setter
 @ToString
+@NoArgsConstructor
 public class Pc {
 
     @Id
@@ -67,19 +66,49 @@ public class Pc {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    /**
+     * Builder constructor excluding {@code id}.
+     */
+    @Builder
+    public Pc(
+            String name,
+            Cpu cpu,
+            Gpu gpu,
+            Motherboard motherboard,
+            Ram ram,
+            Ssd ssd,
+            Hdd hdd,
+            Psu psu,
+            Casing casing,
+            CoolingSystem coolingSystem,
+            Networking networking,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt
+    ) {
+        this.name = name;
+        this.cpu = cpu;
+        this.gpu = gpu;
+        this.motherboard = motherboard;
+        this.ram = ram;
+        this.ssd = ssd;
+        this.hdd = hdd;
+        this.psu = psu;
+        this.casing = casing;
+        this.coolingSystem = coolingSystem;
+        this.networking = networking;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;
-
         if (o == null) return false;
-
-        Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy
-                .getHibernateLazyInitializer()
-                .getPersistentClass() : o.getClass();
-        Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy
-                .getHibernateLazyInitializer()
-                .getPersistentClass() : this.getClass();
-
+        Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : o.getClass();
+        Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         Pc pc = (Pc) o;
         return getId() != null && Objects.equals(getId(), pc.getId());
@@ -87,9 +116,6 @@ public class Pc {
 
     @Override
     public final int hashCode() {
-        return this instanceof HibernateProxy proxy ? proxy
-                .getHibernateLazyInitializer()
-                .getPersistentClass()
-                .hashCode() : getClass().hashCode();
+        return this instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
 }
