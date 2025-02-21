@@ -21,50 +21,50 @@ public class Motherboard {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "model is required")
     private String model;
 
     @Column(name = "form_factor")
-    @NotNull
+    @NotNull(message = "form_factor is required")
     private String formFactor;
 
     @Column(name = "socket")
-    @NotNull
+    @NotNull(message = "socket is required")
     private String socket;
 
     @Column(name = "chipset")
-    @NotNull
+    @NotNull(message = "chipset is required")
     private String chipset;
 
     @Column(name = "ram_slot_amount")
-    @NotNull
+    @NotNull(message = "ram_slot_amount is required")
     private int ramSlotAmount;
 
     @Column(name = "ram_type")
-    @NotNull
+    @NotNull(message = "ram_type is required")
     private String ramType;
 
     @Column(name = "pcie16_amount")
-    @NotNull
+    @NotNull(message = "pcie16_amount is required")
     private int pcie16Amount;
 
     @Column(name = "pcie4_amount")
     private int pcie4Amount;
 
     @Column(name = "pcie1_amount")
-    @NotNull
+    @NotNull(message = "pcie1_amount is required")
     private int pcie1Amount;
 
     @Column(name = "m2_amount")
-    @NotNull
+    @NotNull(message = "m2_amount is required")
     private int m2Amount;
 
     @Column(name = "sata_amount")
-    @NotNull
+    @NotNull(message = "sata_amount is required")
     private int sataAmount;
 
     /**

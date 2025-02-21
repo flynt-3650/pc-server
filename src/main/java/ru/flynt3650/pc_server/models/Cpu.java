@@ -21,38 +21,38 @@ public class Cpu {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "Make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "Model is required")
     private String model;
 
     @Column(name = "core_amount")
-    @NotNull
+    @NotNull(message = "Core amount is required")
     private int coreAmount;
 
     @Column(name = "thread_amount")
-    @NotNull
+    @NotNull(message = "Thread amount is required")
     private int threadAmount;
 
     @Column(name = "clock_speed")
-    @NotNull
+    @NotNull(message = "Clock speed is required")
     private double clockSpeed;
 
     @Column(name = "l3_size")
-    @NotNull
+    @NotNull(message = "L3 size is required")
     private double l3Size;
 
     @Column(name = "socket")
-    @NotNull
+    @NotNull(message = "Socket is required")
     private String socket;
 
     @Column(name = "igpu")
     private String igpu;
 
     @Column(name = "tdp")
-    @NotNull
+    @NotNull(message = "TDP is required")
     private int tdp;
 
     /**

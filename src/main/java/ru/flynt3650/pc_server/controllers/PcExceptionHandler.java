@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import ru.flynt3650.pc_server.util.ExceptionResponse;
 import ru.flynt3650.pc_server.util.exceptions.DuplicatePcNameException;
+import ru.flynt3650.pc_server.util.exceptions.PcNotFoundException;
 
 @RestControllerAdvice
 public class PcExceptionHandler extends ResponseEntityExceptionHandler {
@@ -20,5 +21,11 @@ public class PcExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(er, HttpStatus.BAD_REQUEST);
     }
 
-
+    @ExceptionHandler(PcNotFoundException.class)
+    public ResponseEntity<ExceptionResponse> handlePcNotFoundException(PcNotFoundException ex) {
+        ExceptionResponse er = new ExceptionResponse(
+                System.currentTimeMillis(), ex.getMessage()
+        );
+        return new ResponseEntity<>(er, HttpStatus.NOT_FOUND);
+    }
 }

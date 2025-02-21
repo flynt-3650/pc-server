@@ -9,16 +9,27 @@ import lombok.Data;
 @Data
 public class PcDto {
     Integer id;
+    @NotNull(message = "Name is required")
     String name;
+    @NotNull(message = "Cpu is required")
     CpuDto cpu;
+    @NotNull(message = "Gpu is required")
     GpuDto gpu;
+    @NotNull(message = "Motherboard is required")
     MotherboardDto motherboard;
+    @NotNull(message = "Ram is required")
     RamDto ram;
+    @NotNull(message = "Ssd is required")
     SsdDto ssd;
+    @NotNull(message = "Hdd is required")
     HddDto hdd;
+    @NotNull(message = "Psu is required")
     PsuDto psu;
+    @NotNull(message = "Case is required")
     CasingDto casing;
+    @NotNull(message = "Cooling system is required")
     CoolingSystemDto coolingSystem;
+    @NotNull(message = "Networking is required")
     NetworkingDto networking;
 
     /**
@@ -27,15 +38,15 @@ public class PcDto {
     @Data
     public static class CpuDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
         int coreAmount;
         int threadAmount;
         double clockSpeed;
         double l3Size;
-        @NotNull
+        @NotNull(message = "Socket is required")
         String socket;
         String igpu;
         int tdp;
@@ -47,9 +58,9 @@ public class PcDto {
     @Data
     public static class GpuDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
         int vramSize;
         int clockSpeed;
@@ -68,18 +79,18 @@ public class PcDto {
     @Data
     public static class MotherboardDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "make is required")
         String make;
-        @NotNull
+        @NotNull(message = "model is required")
         String model;
-        @NotNull
+        @NotNull(message = "form_factor is required")
         String formFactor;
-        @NotNull
+        @NotNull(message = "socket is required")
         String socket;
-        @NotNull
+        @NotNull(message = "chipset is required")
         String chipset;
         int ramSlotAmount;
-        @NotNull
+        @NotNull(message = "ram_type is required")
         String ramType;
         int pcie16Amount;
         int pcie4Amount;
@@ -94,13 +105,13 @@ public class PcDto {
     @Data
     public static class RamDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
         int capacity;
         int amount;
-        @NotNull
+        @NotNull(message = "RamType is required")
         String ramType;
         int clock;
     }
@@ -111,16 +122,16 @@ public class PcDto {
     @Data
     public static class SsdDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
         int capacity;
-        @NotNull
+        @NotNull(message = "Type is required")
         String type;
-        @NotNull
+        @NotNull(message = "FormFactor is required")
         String formFactor;
-        @NotNull
+        @NotNull(message = "ConnectionInterface is required")
         String connectionInterface;
         int readSpeed;
         int writeSpeed;
@@ -133,16 +144,16 @@ public class PcDto {
     @Data
     public static class HddDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
         int capacity;
         int rpm;
         int cacheSize;
-        @NotNull
+        @NotNull(message = "FormFactor is required")
         String formFactor;
-        @NotNull
+        @NotNull(message = "ConnectionInterface is required")
         String connectionInterface;
     }
 
@@ -152,15 +163,15 @@ public class PcDto {
     @Data
     public static class PsuDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
         int wattage;
         String efficiencyRating;
-        @NotNull
+        @NotNull(message = "Modularity is required")
         String modularity;
-        @NotNull
+        @NotNull(message = "Connectors is required")
         String connectors;
         String fanSize;
         String coolingType;
@@ -172,11 +183,11 @@ public class PcDto {
     @Data
     public static class CasingDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
-        @NotNull
+        @NotNull(message = "Form factor is required")
         String formFactor;
         String material;
         String coolingSupport;
@@ -193,16 +204,16 @@ public class PcDto {
     @Data
     public static class CoolingSystemDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
-        @NotNull
+        @NotNull(message = "Type is required")
         String type;
         String fanSize;
         String radiatorSize;
         String noiseLevel;
-        @NotNull
+        @NotNull(message = "Socket compatibility is required")
         String socketCompatibility;
         int tdpSupport;
         boolean includesRgb;
@@ -214,13 +225,13 @@ public class PcDto {
     @Data
     public static class NetworkingDto {
         Integer id;
-        @NotNull
+        @NotNull(message = "Make is required")
         String make;
-        @NotNull
+        @NotNull(message = "Model is required")
         String model;
-        @NotNull
+        @NotNull(message = "Type is required")
         String type;
-        @NotNull
+        @NotNull(message = "ConnectionInterface is required")
         String connectionInterface;
         String wifiStandard;
         String ethernetSpeed;

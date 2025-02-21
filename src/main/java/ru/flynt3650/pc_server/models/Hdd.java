@@ -21,31 +21,31 @@ public class Hdd {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "Make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "Model is required")
     private String model;
 
     @Column(name = "capacity")
-    @NotNull
+    @NotNull(message = "Capacity is required")
     private int capacity;
 
     @Column(name = "rpm")
-    @NotNull
+    @NotNull(message = "RPM is required")
     private int rpm;
 
     @Column(name = "cache_size")
-    @NotNull
+    @NotNull(message = "CacheSize is required")
     private int cacheSize;
 
     @Column(name = "form_factor")
-    @NotNull
+    @NotNull(message = "FormFactor is required")
     private String formFactor;
 
     @Column(name = "connection_interface")
-    @NotNull
+    @NotNull(message = "ConnectionInterface is required")
     private String connectionInterface;
 
     /**

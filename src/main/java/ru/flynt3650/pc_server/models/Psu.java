@@ -21,26 +21,26 @@ public class Psu {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "Make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "Model is required")
     private String model;
 
     @Column(name = "wattage")
-    @NotNull
+    @NotNull(message = "Wattage is required")
     private int wattage;
 
     @Column(name = "efficiency_rating")
     private String efficiencyRating;
 
     @Column(name = "modularity")
-    @NotNull
+    @NotNull(message = "Modularity is required")
     private String modularity;
 
     @Column(name = "connectors")
-    @NotNull
+    @NotNull(message = "Connectors is required")
     private String connectors;
 
     @Column(name = "fan_size")

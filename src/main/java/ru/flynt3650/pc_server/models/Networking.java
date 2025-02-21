@@ -21,19 +21,19 @@ public class Networking {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "Make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "Model is required")
     private String model;
 
     @Column(name = "type")
-    @NotNull
+    @NotNull(message = "Type is required")
     private String type;
 
     @Column(name = "connection_interface")
-    @NotNull
+    @NotNull(message = "ConnectionInterface is required")
     private String connectionInterface;
 
     @Column(name = "wifi_standard")

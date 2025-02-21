@@ -21,15 +21,15 @@ public class Casing {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "Make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "Model is required")
     private String model;
 
     @Column(name = "form_factor")
-    @NotNull
+    @NotNull(message = "Form factor is required")
     private String formFactor;
 
     @Column(name = "material")
@@ -39,7 +39,7 @@ public class Casing {
     private String coolingSupport;
 
     @Column(name = "expansion_slots")
-    @NotNull
+    @NotNull(message = "Expansion slots is required")
     private int expansionSlots;
 
     @Column(name = "drive_bays_35")
@@ -52,7 +52,7 @@ public class Casing {
     private String frontPanelPorts;
 
     @Column(name = "includes_rgb")
-    @NotNull
+    @NotNull(message = "Includes RGB is required")
     private boolean includesRgb;
 
     /**

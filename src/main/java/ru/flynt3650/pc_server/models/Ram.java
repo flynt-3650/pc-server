@@ -21,27 +21,27 @@ public class Ram {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "Make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "Model is required")
     private String model;
 
     @Column(name = "capacity")
-    @NotNull
+    @NotNull(message = "Capacity is required")
     private int capacity;
 
     @Column(name = "amount")
-    @NotNull
+    @NotNull(message = "Amount is required")
     private int amount;
 
     @Column(name = "ram_type")
-    @NotNull
+    @NotNull(message = "RamType is required")
     private String ramType;
 
     @Column(name = "clock")
-    @NotNull
+    @NotNull(message = "Clock is required")
     private int clock;
 
     /**

@@ -1,6 +1,7 @@
 package ru.flynt3650.pc_server.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -21,46 +22,57 @@ public class Pc {
     private Integer id;
 
     @Column(name = "name")
+    @NotNull(message = "Name is required")
     private String name;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "cpu_id", referencedColumnName = "id")
+    @NotNull(message = "Cpu is required")
     private Cpu cpu;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "gpu_id", referencedColumnName = "id")
+    @NotNull(message = "Gpu is required")
     private Gpu gpu;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "motherboard_id", referencedColumnName = "id")
+    @NotNull(message = "Motherboard is required")
     private Motherboard motherboard;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ram_id", referencedColumnName = "id")
+    @NotNull(message = "Ram is required")
     private Ram ram;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ssd_id", referencedColumnName = "id")
+    @NotNull(message = "Ssd is required")
     private Ssd ssd;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "hdd_id", referencedColumnName = "id")
+    @NotNull(message = "Hdd is required")
     private Hdd hdd;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "psu_id", referencedColumnName = "id")
+    @NotNull(message = "Psu is required")
     private Psu psu;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "case_id", referencedColumnName = "id")
+    @NotNull(message = "Case is required")
     private Casing casing;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "cooling_system_id", referencedColumnName = "id")
+    @NotNull(message = "Cooling system is required")
     private CoolingSystem coolingSystem;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "networking_id", referencedColumnName = "id")
+    @NotNull(message = "Networking is required")
     private Networking networking;
 
     @Column(name = "created_at")

@@ -21,47 +21,47 @@ public class Gpu {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "Make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "Model is required")
     private String model;
 
     @Column(name = "vram_size")
-    @NotNull
+    @NotNull(message = "Vram size is required")
     private int vramSize;
 
     @Column(name = "clock_speed")
-    @NotNull
+    @NotNull(message = "Clock speed is required")
     private int clockSpeed;
 
     @Column(name = "mem_bus_width")
-    @NotNull
+    @NotNull(message = "Mem bus width is required")
     private int memBusWidth;
 
     @Column(name = "has_hdmi")
-    @NotNull
+    @NotNull(message = "Has hdmi is required")
     private boolean hasHdmi;
 
     @Column(name = "has_dp")
-    @NotNull
+    @NotNull(message = "Has dp is required")
     private boolean hasDp;
 
     @Column(name = "has_usbc")
-    @NotNull
+    @NotNull(message = "Has usbc is required")
     private boolean hasUsbc;
 
     @Column(name = "has_dvi")
-    @NotNull
+    @NotNull(message = "Has dvi is required")
     private boolean hasDvi;
 
     @Column(name = "has_vga")
-    @NotNull
+    @NotNull(message = "Has vga is required")
     private boolean hasVga;
 
     @Column(name = "power_consumption")
-    @NotNull
+    @NotNull(message = "Power consumption is required")
     private int powerConsumption;
 
     /**

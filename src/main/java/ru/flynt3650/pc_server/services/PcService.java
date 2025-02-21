@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.flynt3650.pc_server.models.Pc;
 import ru.flynt3650.pc_server.repositories.PcRepository;
+import ru.flynt3650.pc_server.util.exceptions.PcNotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -28,7 +29,7 @@ public class PcService {
     public Pc findById(Integer id) {
         return pcRepository
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException("PC's ID not found."));
+                .orElseThrow(() -> new PcNotFoundException("PC with ID " + id + " not found."));
     }
 
     public List<Pc> findByName(String name) {
@@ -38,7 +39,7 @@ public class PcService {
     @Transactional
     public void save(Pc pc) {
         if (pc != null) {
-            updateExistingPc(pc);
+            refreshUpdatedAt(pc);
             pcRepository.save(pc);
         } else {
             throw new RuntimeException("PC is null.");
@@ -60,7 +61,7 @@ public class PcService {
         pc.setCasing(newPc.getCasing());
         pc.setCoolingSystem(newPc.getCoolingSystem());
         pc.setNetworking(newPc.getNetworking());
-        updateExistingPc(pc);
+        refreshUpdatedAt(pc);
     }
 
     @Transactional
@@ -68,11 +69,11 @@ public class PcService {
         pcRepository.delete(findById(id));
     }
 
-    private void updateExistingPc(Pc pc) {
+    private void refreshUpdatedAt(Pc pc) {
         pc.setUpdatedAt(LocalDateTime.now());
     }
 
-    private void createPc(Pc pc) {
+    private void refreshCreatedAt(Pc pc) {
         pc.setCreatedAt(LocalDateTime.now());
     }
 }

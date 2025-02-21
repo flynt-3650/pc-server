@@ -21,15 +21,15 @@ public class CoolingSystem {
     private Integer id;
 
     @Column(name = "make")
-    @NotNull
+    @NotNull(message = "Make is required")
     private String make;
 
     @Column(name = "model")
-    @NotNull
+    @NotNull(message = "Model is required")
     private String model;
 
     @Column(name = "type")
-    @NotNull
+    @NotNull(message = "Type is required")
     private String type;
 
     @Column(name = "fan_size")
@@ -42,14 +42,14 @@ public class CoolingSystem {
     private String noiseLevel;
 
     @Column(name = "socket_compatibility")
-    @NotNull
+    @NotNull(message = "Socket compatibility is required")
     private String socketCompatibility;
 
     @Column(name = "tdp_support")
     private int tdpSupport;
 
     @Column(name = "includes_rgb")
-    @NotNull
+    @NotNull(message = "Includes RGB is required")
     private boolean includesRgb;
 
     /**
