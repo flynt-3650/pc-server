@@ -1,13 +1,18 @@
 package ru.flynt3650.pc_server.controllers;
 
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.flynt3650.pc_server.dto.PcDto;
 import ru.flynt3650.pc_server.models.Pc;
 import ru.flynt3650.pc_server.services.PcService;
+import ru.flynt3650.pc_server.util.PcDtoValidator;
+import ru.flynt3650.pc_server.util.exceptions.DuplicatePcNameException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,11 +23,13 @@ public class PcController {
 
     private final PcService pcService;
     private final ModelMapper modelMapper;
+    private final PcDtoValidator pcDtoValidator;
 
     @Autowired
-    public PcController(PcService pcService, ModelMapper modelMapper) {
+    public PcController(PcService pcService, ModelMapper modelMapper, PcDtoValidator pcDtoValidator) {
         this.pcService = pcService;
         this.modelMapper = modelMapper;
+        this.pcDtoValidator = pcDtoValidator;
     }
 
     @GetMapping
@@ -40,13 +47,49 @@ public class PcController {
     }
 
     @PatchMapping("/update/{id}")
-    public ResponseEntity<HttpStatus> patchPc(@RequestBody PcDto updatedPcDto, @PathVariable("id") Integer id) {
+    public ResponseEntity<HttpStatus> patchPc(@RequestBody @Valid PcDto updatedPcDto, @PathVariable("id") Integer id,
+                                              BindingResult bindingResult) {
+
+        pcDtoValidator.validate(updatedPcDto, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            StringBuilder errorMessage = new StringBuilder();
+
+            List<FieldError> errors = bindingResult.getFieldErrors();
+            for (var error : errors)
+                errorMessage
+                        .append(error.getField())
+                        .append(" - ")
+                        .append(error.getDefaultMessage())
+                        .append(";");
+
+            throw new DuplicatePcNameException(errorMessage.toString());
+        }
+
         pcService.update(toPc(updatedPcDto), id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<HttpStatus> postPc(@RequestBody PcDto newPcDto) {
+    public ResponseEntity<HttpStatus> postPc(@RequestBody @Valid PcDto newPcDto,
+                                             BindingResult bindingResult) {
+
+        pcDtoValidator.validate(newPcDto, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            StringBuilder errorMessage = new StringBuilder();
+
+            List<FieldError> errors = bindingResult.getFieldErrors();
+            for (var error : errors)
+                errorMessage
+                        .append(error.getField())
+                        .append(" - ")
+                        .append(error.getDefaultMessage())
+                        .append(";");
+
+            throw new DuplicatePcNameException(errorMessage.toString());
+        }
+
         pcService.save(toPc(newPcDto));
         return new ResponseEntity<>(HttpStatus.OK);
     }

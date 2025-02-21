@@ -31,6 +31,10 @@ public class PcService {
                 .orElseThrow(() -> new RuntimeException("PC's ID not found."));
     }
 
+    public List<Pc> findByName(String name) {
+        return pcRepository.findByName(name);
+    }
+
     @Transactional
     public void save(Pc pc) {
         if (pc != null) {
