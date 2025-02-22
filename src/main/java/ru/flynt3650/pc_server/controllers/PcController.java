@@ -12,7 +12,8 @@ import ru.flynt3650.pc_server.dto.PcDto;
 import ru.flynt3650.pc_server.models.Pc;
 import ru.flynt3650.pc_server.services.PcService;
 import ru.flynt3650.pc_server.util.PcDtoValidator;
-import ru.flynt3650.pc_server.util.exceptions.DuplicatePcNameException;
+import ru.flynt3650.pc_server.util.exceptions.PcNotSavedException;
+import ru.flynt3650.pc_server.util.exceptions.PcNotUpdatedException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -61,9 +62,9 @@ public class PcController {
                         .append(error.getField())
                         .append(" - ")
                         .append(error.getDefaultMessage())
-                        .append(";");
+                        .append("; ");
 
-            throw new DuplicatePcNameException(errorMessage.toString());
+            throw new PcNotUpdatedException(errorMessage.toString());
         }
 
         pcService.update(toPc(updatedPcDto), id);
@@ -85,9 +86,9 @@ public class PcController {
                         .append(error.getField())
                         .append(" - ")
                         .append(error.getDefaultMessage())
-                        .append(";");
+                        .append("; ");
 
-            throw new DuplicatePcNameException(errorMessage.toString());
+            throw new PcNotSavedException(errorMessage.toString());
         }
 
         pcService.save(toPc(newPcDto));

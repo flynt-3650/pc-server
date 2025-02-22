@@ -38,12 +38,8 @@ public class PcService {
 
     @Transactional
     public void save(Pc pc) {
-        if (pc != null) {
-            refreshUpdatedAt(pc);
-            pcRepository.save(pc);
-        } else {
-            throw new RuntimeException("PC is null.");
-        }
+        refreshUpdatedAt(pc);
+        pcRepository.save(pc);
     }
 
     @Transactional
@@ -61,7 +57,7 @@ public class PcService {
         pc.setCasing(newPc.getCasing());
         pc.setCoolingSystem(newPc.getCoolingSystem());
         pc.setNetworking(newPc.getNetworking());
-        refreshUpdatedAt(pc);
+        refreshCreatedAt(pc);
     }
 
     @Transactional

@@ -1,5 +1,6 @@
 package ru.flynt3650.pc_server.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -11,24 +12,44 @@ public class PcDto {
     Integer id;
     @NotNull(message = "Name is required")
     String name;
+
+    @Valid
     @NotNull(message = "Cpu is required")
     CpuDto cpu;
+
+    @Valid
     @NotNull(message = "Gpu is required")
     GpuDto gpu;
+
+    @Valid
     @NotNull(message = "Motherboard is required")
     MotherboardDto motherboard;
+
+    @Valid
     @NotNull(message = "Ram is required")
     RamDto ram;
+
+    @Valid
     @NotNull(message = "Ssd is required")
     SsdDto ssd;
+
+    @Valid
     @NotNull(message = "Hdd is required")
     HddDto hdd;
+
+    @Valid
     @NotNull(message = "Psu is required")
     PsuDto psu;
+
+    @Valid
     @NotNull(message = "Case is required")
     CasingDto casing;
+
+    @Valid
     @NotNull(message = "Cooling system is required")
     CoolingSystemDto coolingSystem;
+
+    @Valid
     @NotNull(message = "Networking is required")
     NetworkingDto networking;
 
