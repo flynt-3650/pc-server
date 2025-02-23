@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.models;
+package ru.flynt3650.pc_server.models.pc_components;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,12 +8,12 @@ import org.hibernate.proxy.HibernateProxy;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ssd")
+@Table(name = "casing")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Ssd {
+public class Casing {
 
     @Id
     @Column(name = "id")
@@ -28,57 +28,60 @@ public class Ssd {
     @NotNull(message = "Model is required")
     private String model;
 
-    @Column(name = "capacity")
-    @NotNull(message = "Capacity is required")
-    private int capacity;
-
-    @Column(name = "type")
-    @NotNull(message = "Type is required")
-    private String type;
-
     @Column(name = "form_factor")
-    @NotNull(message = "FormFactor is required")
+    @NotNull(message = "Form factor is required")
     private String formFactor;
 
-    @Column(name = "connection_interface")
-    @NotNull(message = "ConnectionInterface is required")
-    private String connectionInterface;
+    @Column(name = "material")
+    private String material;
 
-    @Column(name = "read_speed")
-    @NotNull(message = "ReadSpeed is required")
-    private int readSpeed;
+    @Column(name = "cooling_support")
+    private String coolingSupport;
 
-    @Column(name = "write_speed")
-    @NotNull(message = "WriteSpeed is required")
-    private int writeSpeed;
+    @Column(name = "expansion_slots")
+    @NotNull(message = "Expansion slots is required")
+    private int expansionSlots;
 
-    @Column(name = "tbw")
-    private int tbw;
+    @Column(name = "drive_bays_35")
+    private int driveBays35;
+
+    @Column(name = "drive_bays_25")
+    private int driveBays25;
+
+    @Column(name = "front_panel_ports")
+    private String frontPanelPorts;
+
+    @Column(name = "includes_rgb")
+    @NotNull(message = "Includes RGB is required")
+    private boolean includesRgb;
 
     /**
-     * Builder constructor excluding {@code id}.
+     * Lombok Builder constructor that includes all fields except {@code id}.
+     * This effectively acts like an "all-args constructor" without the {@code id}.
      */
     @Builder
-    public Ssd(
+    public Casing(
             @NotNull String make,
             @NotNull String model,
-            @NotNull int capacity,
-            @NotNull String type,
             @NotNull String formFactor,
-            @NotNull String connectionInterface,
-            @NotNull int readSpeed,
-            @NotNull int writeSpeed,
-            int tbw
+            String material,
+            String coolingSupport,
+            int expansionSlots,
+            int driveBays35,
+            int driveBays25,
+            String frontPanelPorts,
+            boolean includesRgb
     ) {
         this.make = make;
         this.model = model;
-        this.capacity = capacity;
-        this.type = type;
         this.formFactor = formFactor;
-        this.connectionInterface = connectionInterface;
-        this.readSpeed = readSpeed;
-        this.writeSpeed = writeSpeed;
-        this.tbw = tbw;
+        this.material = material;
+        this.coolingSupport = coolingSupport;
+        this.expansionSlots = expansionSlots;
+        this.driveBays35 = driveBays35;
+        this.driveBays25 = driveBays25;
+        this.frontPanelPorts = frontPanelPorts;
+        this.includesRgb = includesRgb;
     }
 
     @Override
@@ -88,8 +91,8 @@ public class Ssd {
         Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Ssd ssd = (Ssd) o;
-        return getId() != null && Objects.equals(getId(), ssd.getId());
+        Casing casing = (Casing) o;
+        return getId() != null && Objects.equals(getId(), casing.getId());
     }
 
     @Override

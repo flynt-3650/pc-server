@@ -3,9 +3,10 @@ package ru.flynt3650.pc_server.dto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import ru.flynt3650.pc_server.models.pc_components.*;
 
 /**
- * DTO for {@link ru.flynt3650.pc_server.models.Pc}
+ * DTO for {@link Pc}
  */
 @Data
 public class PcDto {
@@ -54,7 +55,7 @@ public class PcDto {
     NetworkingDto networking;
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Cpu}
+     * DTO for {@link Cpu}
      */
     @Data
     public static class CpuDto {
@@ -74,7 +75,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Gpu}
+     * DTO for {@link Gpu}
      */
     @Data
     public static class GpuDto {
@@ -95,7 +96,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Motherboard}
+     * DTO for {@link Motherboard}
      */
     @Data
     public static class MotherboardDto {
@@ -121,7 +122,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Ram}
+     * DTO for {@link Ram}
      */
     @Data
     public static class RamDto {
@@ -138,7 +139,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Ssd}
+     * DTO for {@link Ssd}
      */
     @Data
     public static class SsdDto {
@@ -160,7 +161,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Hdd}
+     * DTO for {@link Hdd}
      */
     @Data
     public static class HddDto {
@@ -179,7 +180,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Psu}
+     * DTO for {@link Psu}
      */
     @Data
     public static class PsuDto {
@@ -199,7 +200,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Casing}
+     * DTO for {@link Casing}
      */
     @Data
     public static class CasingDto {
@@ -220,7 +221,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.CoolingSystem}
+     * DTO for {@link CoolingSystem}
      */
     @Data
     public static class CoolingSystemDto {
@@ -241,7 +242,7 @@ public class PcDto {
     }
 
     /**
-     * DTO for {@link ru.flynt3650.pc_server.models.Networking}
+     * DTO for {@link Networking}
      */
     @Data
     public static class NetworkingDto {

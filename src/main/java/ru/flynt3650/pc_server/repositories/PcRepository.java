@@ -2,7 +2,7 @@ package ru.flynt3650.pc_server.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.flynt3650.pc_server.models.Pc;
+import ru.flynt3650.pc_server.models.pc_components.Pc;
 
 import java.util.List;
 

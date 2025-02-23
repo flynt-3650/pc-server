@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.models;
+package ru.flynt3650.pc_server.models.pc_components;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,12 +8,12 @@ import org.hibernate.proxy.HibernateProxy;
 import java.util.Objects;
 
 @Entity
-@Table(name = "psu")
+@Table(name = "ram")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Psu {
+public class Ram {
 
     @Id
     @Column(name = "id")
@@ -28,49 +28,40 @@ public class Psu {
     @NotNull(message = "Model is required")
     private String model;
 
-    @Column(name = "wattage")
-    @NotNull(message = "Wattage is required")
-    private int wattage;
+    @Column(name = "capacity")
+    @NotNull(message = "Capacity is required")
+    private int capacity;
 
-    @Column(name = "efficiency_rating")
-    private String efficiencyRating;
+    @Column(name = "amount")
+    @NotNull(message = "Amount is required")
+    private int amount;
 
-    @Column(name = "modularity")
-    @NotNull(message = "Modularity is required")
-    private String modularity;
+    @Column(name = "ram_type")
+    @NotNull(message = "RamType is required")
+    private String ramType;
 
-    @Column(name = "connectors")
-    @NotNull(message = "Connectors is required")
-    private String connectors;
-
-    @Column(name = "fan_size")
-    private String fanSize;
-
-    @Column(name = "cooling_type")
-    private String coolingType;
+    @Column(name = "clock")
+    @NotNull(message = "Clock is required")
+    private int clock;
 
     /**
      * Builder constructor excluding {@code id}.
      */
     @Builder
-    public Psu(
+    public Ram(
             @NotNull String make,
             @NotNull String model,
-            @NotNull int wattage,
-            String efficiencyRating,
-            @NotNull String modularity,
-            @NotNull String connectors,
-            String fanSize,
-            String coolingType
+            @NotNull int capacity,
+            @NotNull int amount,
+            @NotNull String ramType,
+            @NotNull int clock
     ) {
         this.make = make;
         this.model = model;
-        this.wattage = wattage;
-        this.efficiencyRating = efficiencyRating;
-        this.modularity = modularity;
-        this.connectors = connectors;
-        this.fanSize = fanSize;
-        this.coolingType = coolingType;
+        this.capacity = capacity;
+        this.amount = amount;
+        this.ramType = ramType;
+        this.clock = clock;
     }
 
     @Override
@@ -80,8 +71,8 @@ public class Psu {
         Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Psu psu = (Psu) o;
-        return getId() != null && Objects.equals(getId(), psu.getId());
+        Ram ram = (Ram) o;
+        return getId() != null && Objects.equals(getId(), ram.getId());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.models;
+package ru.flynt3650.pc_server.models.pc_components;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,12 +8,12 @@ import org.hibernate.proxy.HibernateProxy;
 import java.util.Objects;
 
 @Entity
-@Table(name = "casing")
+@Table(name = "cooling_system")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Casing {
+public class CoolingSystem {
 
     @Id
     @Column(name = "id")
@@ -28,59 +28,53 @@ public class Casing {
     @NotNull(message = "Model is required")
     private String model;
 
-    @Column(name = "form_factor")
-    @NotNull(message = "Form factor is required")
-    private String formFactor;
+    @Column(name = "type")
+    @NotNull(message = "Type is required")
+    private String type;
 
-    @Column(name = "material")
-    private String material;
+    @Column(name = "fan_size")
+    private String fanSize;
 
-    @Column(name = "cooling_support")
-    private String coolingSupport;
+    @Column(name = "radiator_size")
+    private String radiatorSize;
 
-    @Column(name = "expansion_slots")
-    @NotNull(message = "Expansion slots is required")
-    private int expansionSlots;
+    @Column(name = "noise_level")
+    private String noiseLevel;
 
-    @Column(name = "drive_bays_35")
-    private int driveBays35;
+    @Column(name = "socket_compatibility")
+    @NotNull(message = "Socket compatibility is required")
+    private String socketCompatibility;
 
-    @Column(name = "drive_bays_25")
-    private int driveBays25;
-
-    @Column(name = "front_panel_ports")
-    private String frontPanelPorts;
+    @Column(name = "tdp_support")
+    private int tdpSupport;
 
     @Column(name = "includes_rgb")
     @NotNull(message = "Includes RGB is required")
     private boolean includesRgb;
 
     /**
-     * Lombok Builder constructor that includes all fields except {@code id}.
-     * This effectively acts like an "all-args constructor" without the {@code id}.
+     * Lombok builder constructor for all fields except {@code id}.
      */
     @Builder
-    public Casing(
+    public CoolingSystem(
             @NotNull String make,
             @NotNull String model,
-            @NotNull String formFactor,
-            String material,
-            String coolingSupport,
-            int expansionSlots,
-            int driveBays35,
-            int driveBays25,
-            String frontPanelPorts,
+            @NotNull String type,
+            String fanSize,
+            String radiatorSize,
+            String noiseLevel,
+            @NotNull String socketCompatibility,
+            int tdpSupport,
             boolean includesRgb
     ) {
         this.make = make;
         this.model = model;
-        this.formFactor = formFactor;
-        this.material = material;
-        this.coolingSupport = coolingSupport;
-        this.expansionSlots = expansionSlots;
-        this.driveBays35 = driveBays35;
-        this.driveBays25 = driveBays25;
-        this.frontPanelPorts = frontPanelPorts;
+        this.type = type;
+        this.fanSize = fanSize;
+        this.radiatorSize = radiatorSize;
+        this.noiseLevel = noiseLevel;
+        this.socketCompatibility = socketCompatibility;
+        this.tdpSupport = tdpSupport;
         this.includesRgb = includesRgb;
     }
 
@@ -91,8 +85,8 @@ public class Casing {
         Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Casing casing = (Casing) o;
-        return getId() != null && Objects.equals(getId(), casing.getId());
+        CoolingSystem that = (CoolingSystem) o;
+        return getId() != null && Objects.equals(getId(), that.getId());
     }
 
     @Override

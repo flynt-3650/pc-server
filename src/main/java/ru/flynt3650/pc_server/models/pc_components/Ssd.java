@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.models;
+package ru.flynt3650.pc_server.models.pc_components;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,12 +8,12 @@ import org.hibernate.proxy.HibernateProxy;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ram")
+@Table(name = "ssd")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Ram {
+public class Ssd {
 
     @Id
     @Column(name = "id")
@@ -32,36 +32,53 @@ public class Ram {
     @NotNull(message = "Capacity is required")
     private int capacity;
 
-    @Column(name = "amount")
-    @NotNull(message = "Amount is required")
-    private int amount;
+    @Column(name = "type")
+    @NotNull(message = "Type is required")
+    private String type;
 
-    @Column(name = "ram_type")
-    @NotNull(message = "RamType is required")
-    private String ramType;
+    @Column(name = "form_factor")
+    @NotNull(message = "FormFactor is required")
+    private String formFactor;
 
-    @Column(name = "clock")
-    @NotNull(message = "Clock is required")
-    private int clock;
+    @Column(name = "connection_interface")
+    @NotNull(message = "ConnectionInterface is required")
+    private String connectionInterface;
+
+    @Column(name = "read_speed")
+    @NotNull(message = "ReadSpeed is required")
+    private int readSpeed;
+
+    @Column(name = "write_speed")
+    @NotNull(message = "WriteSpeed is required")
+    private int writeSpeed;
+
+    @Column(name = "tbw")
+    private int tbw;
 
     /**
      * Builder constructor excluding {@code id}.
      */
     @Builder
-    public Ram(
+    public Ssd(
             @NotNull String make,
             @NotNull String model,
             @NotNull int capacity,
-            @NotNull int amount,
-            @NotNull String ramType,
-            @NotNull int clock
+            @NotNull String type,
+            @NotNull String formFactor,
+            @NotNull String connectionInterface,
+            @NotNull int readSpeed,
+            @NotNull int writeSpeed,
+            int tbw
     ) {
         this.make = make;
         this.model = model;
         this.capacity = capacity;
-        this.amount = amount;
-        this.ramType = ramType;
-        this.clock = clock;
+        this.type = type;
+        this.formFactor = formFactor;
+        this.connectionInterface = connectionInterface;
+        this.readSpeed = readSpeed;
+        this.writeSpeed = writeSpeed;
+        this.tbw = tbw;
     }
 
     @Override
@@ -71,8 +88,8 @@ public class Ram {
         Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Ram ram = (Ram) o;
-        return getId() != null && Objects.equals(getId(), ram.getId());
+        Ssd ssd = (Ssd) o;
+        return getId() != null && Objects.equals(getId(), ssd.getId());
     }
 
     @Override

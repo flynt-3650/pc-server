@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.flynt3650.pc_server.models.Pc;
+import ru.flynt3650.pc_server.models.pc_components.Pc;
 import ru.flynt3650.pc_server.repositories.PcRepository;
 import ru.flynt3650.pc_server.util.exceptions.PcNotFoundException;
 

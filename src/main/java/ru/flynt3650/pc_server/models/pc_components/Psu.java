@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.models;
+package ru.flynt3650.pc_server.models.pc_components;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,12 +8,12 @@ import org.hibernate.proxy.HibernateProxy;
 import java.util.Objects;
 
 @Entity
-@Table(name = "networking")
+@Table(name = "psu")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class Networking {
+public class Psu {
 
     @Id
     @Column(name = "id")
@@ -28,48 +28,49 @@ public class Networking {
     @NotNull(message = "Model is required")
     private String model;
 
-    @Column(name = "type")
-    @NotNull(message = "Type is required")
-    private String type;
+    @Column(name = "wattage")
+    @NotNull(message = "Wattage is required")
+    private int wattage;
 
-    @Column(name = "connection_interface")
-    @NotNull(message = "ConnectionInterface is required")
-    private String connectionInterface;
+    @Column(name = "efficiency_rating")
+    private String efficiencyRating;
 
-    @Column(name = "wifi_standard")
-    private String wifiStandard;
+    @Column(name = "modularity")
+    @NotNull(message = "Modularity is required")
+    private String modularity;
 
-    @Column(name = "ethernet_speed")
-    private String ethernetSpeed;
+    @Column(name = "connectors")
+    @NotNull(message = "Connectors is required")
+    private String connectors;
 
-    @Column(name = "antennas")
-    private int antennas;
+    @Column(name = "fan_size")
+    private String fanSize;
 
-    @Column(name = "bluetooth_version")
-    private String bluetoothVersion;
+    @Column(name = "cooling_type")
+    private String coolingType;
 
     /**
      * Builder constructor excluding {@code id}.
      */
     @Builder
-    public Networking(
+    public Psu(
             @NotNull String make,
             @NotNull String model,
-            @NotNull String type,
-            @NotNull String connectionInterface,
-            String wifiStandard,
-            String ethernetSpeed,
-            int antennas,
-            String bluetoothVersion
+            @NotNull int wattage,
+            String efficiencyRating,
+            @NotNull String modularity,
+            @NotNull String connectors,
+            String fanSize,
+            String coolingType
     ) {
         this.make = make;
         this.model = model;
-        this.type = type;
-        this.connectionInterface = connectionInterface;
-        this.wifiStandard = wifiStandard;
-        this.ethernetSpeed = ethernetSpeed;
-        this.antennas = antennas;
-        this.bluetoothVersion = bluetoothVersion;
+        this.wattage = wattage;
+        this.efficiencyRating = efficiencyRating;
+        this.modularity = modularity;
+        this.connectors = connectors;
+        this.fanSize = fanSize;
+        this.coolingType = coolingType;
     }
 
     @Override
@@ -79,8 +80,8 @@ public class Networking {
         Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Networking that = (Networking) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
+        Psu psu = (Psu) o;
+        return getId() != null && Objects.equals(getId(), psu.getId());
     }
 
     @Override

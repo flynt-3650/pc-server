@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import org.springframework.stereotype.Component;
 import ru.flynt3650.pc_server.dto.PcDto;
-import ru.flynt3650.pc_server.models.Pc;
+import ru.flynt3650.pc_server.models.pc_components.Pc;
 import ru.flynt3650.pc_server.services.PcService;
 
 import java.util.List;

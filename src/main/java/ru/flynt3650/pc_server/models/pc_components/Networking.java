@@ -1,4 +1,4 @@
-package ru.flynt3650.pc_server.models;
+package ru.flynt3650.pc_server.models.pc_components;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -8,12 +8,12 @@ import org.hibernate.proxy.HibernateProxy;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cooling_system")
+@Table(name = "networking")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-public class CoolingSystem {
+public class Networking {
 
     @Id
     @Column(name = "id")
@@ -32,50 +32,44 @@ public class CoolingSystem {
     @NotNull(message = "Type is required")
     private String type;
 
-    @Column(name = "fan_size")
-    private String fanSize;
+    @Column(name = "connection_interface")
+    @NotNull(message = "ConnectionInterface is required")
+    private String connectionInterface;
 
-    @Column(name = "radiator_size")
-    private String radiatorSize;
+    @Column(name = "wifi_standard")
+    private String wifiStandard;
 
-    @Column(name = "noise_level")
-    private String noiseLevel;
+    @Column(name = "ethernet_speed")
+    private String ethernetSpeed;
 
-    @Column(name = "socket_compatibility")
-    @NotNull(message = "Socket compatibility is required")
-    private String socketCompatibility;
+    @Column(name = "antennas")
+    private int antennas;
 
-    @Column(name = "tdp_support")
-    private int tdpSupport;
-
-    @Column(name = "includes_rgb")
-    @NotNull(message = "Includes RGB is required")
-    private boolean includesRgb;
+    @Column(name = "bluetooth_version")
+    private String bluetoothVersion;
 
     /**
-     * Lombok builder constructor for all fields except {@code id}.
+     * Builder constructor excluding {@code id}.
      */
     @Builder
-    public CoolingSystem(
+    public Networking(
             @NotNull String make,
             @NotNull String model,
             @NotNull String type,
-            String fanSize,
-            String radiatorSize,
-            String noiseLevel,
-            @NotNull String socketCompatibility,
-            int tdpSupport,
-            boolean includesRgb
+            @NotNull String connectionInterface,
+            String wifiStandard,
+            String ethernetSpeed,
+            int antennas,
+            String bluetoothVersion
     ) {
         this.make = make;
         this.model = model;
         this.type = type;
-        this.fanSize = fanSize;
-        this.radiatorSize = radiatorSize;
-        this.noiseLevel = noiseLevel;
-        this.socketCompatibility = socketCompatibility;
-        this.tdpSupport = tdpSupport;
-        this.includesRgb = includesRgb;
+        this.connectionInterface = connectionInterface;
+        this.wifiStandard = wifiStandard;
+        this.ethernetSpeed = ethernetSpeed;
+        this.antennas = antennas;
+        this.bluetoothVersion = bluetoothVersion;
     }
 
     @Override
@@ -85,7 +79,7 @@ public class CoolingSystem {
         Class<?> oEffectiveClass = o instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy proxy ? proxy.getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        CoolingSystem that = (CoolingSystem) o;
+        Networking that = (Networking) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 

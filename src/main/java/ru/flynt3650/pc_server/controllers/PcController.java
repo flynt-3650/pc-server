@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.flynt3650.pc_server.dto.PcDto;
-import ru.flynt3650.pc_server.models.Pc;
+import ru.flynt3650.pc_server.models.pc_components.Pc;
 import ru.flynt3650.pc_server.services.PcService;
 import ru.flynt3650.pc_server.util.PcDtoValidator;
 import ru.flynt3650.pc_server.util.exceptions.PcNotSavedException;
