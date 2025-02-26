@@ -1,7 +1,6 @@
 package ru.flynt3650.pc_server.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,6 @@ import ru.flynt3650.pc_server.models.users.Role;
 import ru.flynt3650.pc_server.models.users.User;
 import ru.flynt3650.pc_server.repositories.UserRepository;
 import ru.flynt3650.pc_server.security.JwtUtil;
-import ru.flynt3650.pc_server.security.SecurityConfig;
 
 @Service
 public class UserService {
