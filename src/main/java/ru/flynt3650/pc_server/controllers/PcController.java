@@ -3,14 +3,15 @@ package ru.flynt3650.pc_server.controllers;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.flynt3650.pc_server.dto.PcDto;
 import ru.flynt3650.pc_server.models.pc_components.Pc;
 import ru.flynt3650.pc_server.services.PcService;
+import ru.flynt3650.pc_server.services.UserService;
 import ru.flynt3650.pc_server.util.PcDtoValidator;
 import ru.flynt3650.pc_server.util.exceptions.PcNotSavedException;
 import ru.flynt3650.pc_server.util.exceptions.PcNotUpdatedException;
@@ -27,7 +28,7 @@ public class PcController {
     private final PcDtoValidator pcDtoValidator;
 
     @Autowired
-    public PcController(PcService pcService, ModelMapper modelMapper, PcDtoValidator pcDtoValidator) {
+    public PcController(PcService pcService, ModelMapper modelMapper, PcDtoValidator pcDtoValidator, UserService userService) {
         this.pcService = pcService;
         this.modelMapper = modelMapper;
         this.pcDtoValidator = pcDtoValidator;
@@ -47,8 +48,9 @@ public class PcController {
         return toPcDto(pcService.findById(id));
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PatchMapping("/update/{id}")
-    public ResponseEntity<HttpStatus> patchPc(@RequestBody @Valid PcDto updatedPcDto, @PathVariable("id") Integer id,
+    public ResponseEntity<String> patchPc(@RequestBody @Valid PcDto updatedPcDto, @PathVariable("id") Integer id,
                                               BindingResult bindingResult) {
 
         pcDtoValidator.validate(updatedPcDto, bindingResult);
@@ -68,11 +70,12 @@ public class PcController {
         }
 
         pcService.update(toPc(updatedPcDto), id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok().body("PC updated successfully");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/save")
-    public ResponseEntity<HttpStatus> postPc(@RequestBody @Valid PcDto newPcDto,
+    public ResponseEntity<String> postPc(@RequestBody @Valid PcDto newPcDto,
                                              BindingResult bindingResult) {
 
         pcDtoValidator.validate(newPcDto, bindingResult);
@@ -92,13 +95,14 @@ public class PcController {
         }
 
         pcService.save(toPc(newPcDto));
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok().body("PC created successfully");
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deletePc(@PathVariable("id") Integer id) {
+    public ResponseEntity<String> deletePc(@PathVariable("id") Integer id) {
         pcService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok().body("PC deleted successfully");
     }
 
     private PcDto toPcDto(Pc pc) {

@@ -2,7 +2,10 @@ package ru.flynt3650.pc_server.controllers;
 
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.flynt3650.pc_server.dto.JwtResponseDto;
 import ru.flynt3650.pc_server.dto.UserLoginDto;
 import ru.flynt3650.pc_server.dto.UserRegistrationDto;
