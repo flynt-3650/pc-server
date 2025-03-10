@@ -1,6 +1,5 @@
 package ru.flynt3650.pc_server.services;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +17,7 @@ public class PcService {
     private final PcRepository pcRepository;
 
     @Autowired
-    public PcService(PcRepository pcRepository, ModelMapper modelMapper) {
+    public PcService(PcRepository pcRepository) {
         this.pcRepository = pcRepository;
     }
 
@@ -57,6 +56,7 @@ public class PcService {
         pc.setCasing(newPc.getCasing());
         pc.setCoolingSystem(newPc.getCoolingSystem());
         pc.setNetworking(newPc.getNetworking());
+
         refreshCreatedAt(pc);
     }
 

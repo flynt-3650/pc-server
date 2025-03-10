@@ -27,13 +27,13 @@ public class UserService {
     }
 
     public void registerUser(UserRegistrationDto registrationDto) {
-        if (userRepository.findByEmail(registrationDto.email()).isPresent()) { // check if user already exists
+        if (userRepository.findByEmail(registrationDto.getEmail()).isPresent()) { // Use getter method
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already exists");
         }
 
         User user = User.builder() // build new user
-                .email(registrationDto.email())
-                .password(passwordEncoder.encode(registrationDto.password()))
+                .email(registrationDto.getEmail()) // Use getter method
+                .password(passwordEncoder.encode(registrationDto.getPassword())) // Use getter method
                 .role(Role.ROLE_USER)
                 .build();
 
@@ -41,10 +41,10 @@ public class UserService {
     }
 
     public String loginUser(UserLoginDto loginDTO) {
-        User user = userRepository.findByEmail(loginDTO.email()) // check if user does not exist
+        User user = userRepository.findByEmail(loginDTO.getEmail()) // Use getter method
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid credentials"));
 
-        if (!passwordEncoder.matches(loginDTO.password(), user.getPassword())) { // check if user credentials are OK
+        if (!passwordEncoder.matches(loginDTO.getPassword(), user.getPassword())) { // Use getter method
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid credentials");
         }
         return jwtUtil.generateToken(user.getEmail(), user.getRole().name()); // reply w/ token

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.flynt3650.pc_server.dto.PcDto;
 import ru.flynt3650.pc_server.models.pc_components.Pc;
 import ru.flynt3650.pc_server.services.PcService;
-import ru.flynt3650.pc_server.services.UserService;
 import ru.flynt3650.pc_server.util.PcDtoValidator;
 import ru.flynt3650.pc_server.util.exceptions.PcNotSavedException;
 import ru.flynt3650.pc_server.util.exceptions.PcNotUpdatedException;
@@ -28,7 +27,7 @@ public class PcController {
     private final PcDtoValidator pcDtoValidator;
 
     @Autowired
-    public PcController(PcService pcService, ModelMapper modelMapper, PcDtoValidator pcDtoValidator, UserService userService) {
+    public PcController(PcService pcService, ModelMapper modelMapper, PcDtoValidator pcDtoValidator) {
         this.pcService = pcService;
         this.modelMapper = modelMapper;
         this.pcDtoValidator = pcDtoValidator;
@@ -75,8 +74,7 @@ public class PcController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/save")
-    public ResponseEntity<String> postPc(@RequestBody @Valid PcDto newPcDto,
-                                             BindingResult bindingResult) {
+    public ResponseEntity<String> postPc(@RequestBody @Valid PcDto newPcDto, BindingResult bindingResult) {
 
         pcDtoValidator.validate(newPcDto, bindingResult);
 
