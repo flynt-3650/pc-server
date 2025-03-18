@@ -8,22 +8,22 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 @Component
 public class JwtUtil {
 
-    @Value("${jwt.secret:bananas}")
+    @Value("${jwt.secret}")
     private String jwtSecret;
 
-    @Value("${jwt.expiration:604800000}")
+    @Value("${jwt.expiration}")
     private Long jwtExpirationMs;
 
     public String generateToken(String email, String role) {
-        Date now = new Date();
+        Date now = new Date(); // right now
         Date expiryDate = new Date(now.getTime() + jwtExpirationMs);
-        Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8)); // signing key
+        SecretKey key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8)); // signing key
 
         return Jwts.builder()
                 .subject(email)
@@ -41,18 +41,18 @@ public class JwtUtil {
     public boolean validateToken(String token) {
         try {
             parseClaims(token);
-            return true;
+            return true; // token is valid if we can parse it
         } catch (JwtException | IllegalArgumentException ex) {
             return false;
         }
     }
 
     private Claims parseClaims(String token) {
-        Key key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8)); // signing key
+        SecretKey key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8)); // signing key
         return Jwts.parser()
-                .setSigningKey(key)
+                .verifyWith(key)
                 .build()
-                .parseClaimsJws(token)
+                .parseSignedClaims(token)
                 .getPayload();
     }
 }

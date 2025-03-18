@@ -2,7 +2,6 @@ package ru.flynt3650.pc_server.controllers;
 
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
@@ -26,7 +25,6 @@ public class PcController {
     private final ModelMapper modelMapper;
     private final PcDtoValidator pcDtoValidator;
 
-    @Autowired
     public PcController(PcService pcService, ModelMapper modelMapper, PcDtoValidator pcDtoValidator) {
         this.pcService = pcService;
         this.modelMapper = modelMapper;

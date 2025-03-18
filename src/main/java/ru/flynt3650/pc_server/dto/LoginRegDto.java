@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRegistrationDto {
+public class LoginRegDto {
 
     @Email
     @NotBlank
     private String email;
 
     @NotBlank
-    @Size(min = 4)
+    @Size(min = 4, message = "Password must be at least 4 characters")
     private String password;
 }
