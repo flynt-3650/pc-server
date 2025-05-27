@@ -10,68 +10,71 @@ import ru.flynt3650.pc_server.models.pc_components.*;
  */
 @Data
 public class PcDto {
-    Integer id;
+    private Integer id;
+
     @NotNull(message = "Name is required")
-    String name;
+    private String name;
+
+    private Double price;
 
     @Valid
     @NotNull(message = "Cpu is required")
-    CpuDto cpu;
+    private CpuDto cpu;
 
     @Valid
     @NotNull(message = "Gpu is required")
-    GpuDto gpu;
+    private GpuDto gpu;
 
     @Valid
     @NotNull(message = "Motherboard is required")
-    MotherboardDto motherboard;
+    private MotherboardDto motherboard;
 
     @Valid
     @NotNull(message = "Ram is required")
-    RamDto ram;
+    private RamDto ram;
 
     @Valid
     @NotNull(message = "Ssd is required")
-    SsdDto ssd;
+    private SsdDto ssd;
 
     @Valid
     @NotNull(message = "Hdd is required")
-    HddDto hdd;
+    private HddDto hdd;
 
     @Valid
     @NotNull(message = "Psu is required")
-    PsuDto psu;
+    private PsuDto psu;
 
     @Valid
     @NotNull(message = "Case is required")
-    CasingDto casing;
+    private CasingDto casing;
 
     @Valid
     @NotNull(message = "Cooling system is required")
-    CoolingSystemDto coolingSystem;
+    private CoolingSystemDto coolingSystem;
 
     @Valid
     @NotNull(message = "Networking is required")
-    NetworkingDto networking;
+    private NetworkingDto networking;
 
     /**
      * DTO for {@link Cpu}
      */
     @Data
     public static class CpuDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
-        int coreAmount;
-        int threadAmount;
-        double clockSpeed;
-        double l3Size;
+        private String model;
+        private int coreAmount;
+        private int threadAmount;
+        private double clockSpeed;
+        private double l3Size;
         @NotNull(message = "Socket is required")
-        String socket;
-        String igpu;
-        int tdp;
+        private String socket;
+        private String igpu;
+        private int tdp;
     }
 
     /**
@@ -79,20 +82,20 @@ public class PcDto {
      */
     @Data
     public static class GpuDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
-        int vramSize;
-        int clockSpeed;
-        int memBusWidth;
-        boolean hasHdmi;
-        boolean hasDp;
-        boolean hasUsbc;
-        boolean hasDvi;
-        boolean hasVga;
-        int powerConsumption;
+        private String model;
+        private int vramSize;
+        private int clockSpeed;
+        private int memBusWidth;
+        private boolean hasHdmi;
+        private boolean hasDp;
+        private boolean hasUsbc;
+        private boolean hasDvi;
+        private boolean hasVga;
+        private int powerConsumption;
     }
 
     /**
@@ -100,25 +103,25 @@ public class PcDto {
      */
     @Data
     public static class MotherboardDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "make is required")
-        String make;
+        private String make;
         @NotNull(message = "model is required")
-        String model;
+        private String model;
         @NotNull(message = "form_factor is required")
-        String formFactor;
+        private String formFactor;
         @NotNull(message = "socket is required")
-        String socket;
+        private String socket;
         @NotNull(message = "chipset is required")
-        String chipset;
-        int ramSlotAmount;
+        private String chipset;
+        private int ramSlotAmount;
         @NotNull(message = "ram_type is required")
-        String ramType;
-        int pcie16Amount;
-        int pcie4Amount;
-        int pcie1Amount;
-        int m2Amount;
-        int sataAmount;
+        private String ramType;
+        private int pcie16Amount;
+        private int pcie4Amount;
+        private int pcie1Amount;
+        private int m2Amount;
+        private int sataAmount;
     }
 
     /**
@@ -126,16 +129,16 @@ public class PcDto {
      */
     @Data
     public static class RamDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
-        int capacity;
-        int amount;
+        private String model;
+        private int capacity;
+        private int amount;
         @NotNull(message = "RamType is required")
-        String ramType;
-        int clock;
+        private String ramType;
+        private int clock;
     }
 
     /**
@@ -143,21 +146,21 @@ public class PcDto {
      */
     @Data
     public static class SsdDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
-        int capacity;
+        private String model;
+        private int capacity;
         @NotNull(message = "Type is required")
-        String type;
+        private String type;
         @NotNull(message = "FormFactor is required")
-        String formFactor;
+        private String formFactor;
         @NotNull(message = "ConnectionInterface is required")
-        String connectionInterface;
-        int readSpeed;
-        int writeSpeed;
-        int tbw;
+        private String connectionInterface;
+        private int readSpeed;
+        private int writeSpeed;
+        private int tbw;
     }
 
     /**
@@ -165,18 +168,18 @@ public class PcDto {
      */
     @Data
     public static class HddDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
-        int capacity;
-        int rpm;
-        int cacheSize;
+        private String model;
+        private int capacity;
+        private int rpm;
+        private int cacheSize;
         @NotNull(message = "FormFactor is required")
-        String formFactor;
+        private String formFactor;
         @NotNull(message = "ConnectionInterface is required")
-        String connectionInterface;
+        private String connectionInterface;
     }
 
     /**
@@ -184,19 +187,19 @@ public class PcDto {
      */
     @Data
     public static class PsuDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
-        int wattage;
-        String efficiencyRating;
+        private String model;
+        private int wattage;
+        private String efficiencyRating;
         @NotNull(message = "Modularity is required")
-        String modularity;
+        private String modularity;
         @NotNull(message = "Connectors is required")
-        String connectors;
-        String fanSize;
-        String coolingType;
+        private String connectors;
+        private String fanSize;
+        private String coolingType;
     }
 
     /**
@@ -204,20 +207,20 @@ public class PcDto {
      */
     @Data
     public static class CasingDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
+        private String model;
         @NotNull(message = "Form factor is required")
-        String formFactor;
-        String material;
-        String coolingSupport;
-        int expansionSlots;
-        int driveBays35;
-        int driveBays25;
-        String frontPanelPorts;
-        boolean includesRgb;
+        private String formFactor;
+        private String material;
+        private String coolingSupport;
+        private int expansionSlots;
+        private int driveBays35;
+        private int driveBays25;
+        private String frontPanelPorts;
+        private boolean includesRgb;
     }
 
     /**
@@ -225,20 +228,20 @@ public class PcDto {
      */
     @Data
     public static class CoolingSystemDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
+        private String model;
         @NotNull(message = "Type is required")
-        String type;
-        String fanSize;
-        String radiatorSize;
-        String noiseLevel;
+        private String type;
+        private String fanSize;
+        private String radiatorSize;
+        private String noiseLevel;
         @NotNull(message = "Socket compatibility is required")
-        String socketCompatibility;
-        int tdpSupport;
-        boolean includesRgb;
+        private String socketCompatibility;
+        private int tdpSupport;
+        private boolean includesRgb;
     }
 
     /**
@@ -246,18 +249,18 @@ public class PcDto {
      */
     @Data
     public static class NetworkingDto {
-        Integer id;
+        private Integer id;
         @NotNull(message = "Make is required")
-        String make;
+        private String make;
         @NotNull(message = "Model is required")
-        String model;
+        private String model;
         @NotNull(message = "Type is required")
-        String type;
+        private String type;
         @NotNull(message = "ConnectionInterface is required")
-        String connectionInterface;
-        String wifiStandard;
-        String ethernetSpeed;
-        int antennas;
-        String bluetoothVersion;
+        private String connectionInterface;
+        private String wifiStandard;
+        private String ethernetSpeed;
+        private int antennas;
+        private String bluetoothVersion;
     }
 }

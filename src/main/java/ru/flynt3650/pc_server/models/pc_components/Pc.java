@@ -25,6 +25,9 @@ public class Pc {
     @NotNull(message = "Name is required")
     private String name;
 
+    @Column(name = "price")
+    private Double price;
+
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "cpu_id", referencedColumnName = "id")
     @NotNull(message = "Cpu is required")

@@ -27,12 +27,12 @@ public class PcDtoValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        PcDto pcDto = (PcDto) target;
-        String name = pcDto.getName();
-
-        List<Pc> existingPcs = pcService.findByName(name);
-        if (!existingPcs.isEmpty()) {
-            errors.rejectValue("name", "", "PC with this name already exists");
-        }
+//        PcDto pcDto = (PcDto) target;
+//        String name = pcDto.getName();
+//
+//        List<Pc> existingPcs = pcService.findByName(name);
+//        if (!existingPcs.isEmpty()) {
+//            errors.rejectValue("name", "", "PC with this name already exists");
+//        }
     }
 }
