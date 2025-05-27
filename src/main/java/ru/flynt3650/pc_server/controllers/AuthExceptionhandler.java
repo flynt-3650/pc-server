@@ -6,12 +6,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import ru.flynt3650.pc_server.util.ExceptionResponse;
 
 @ControllerAdvice
-public class authExceptionhandler extends ResponseEntityExceptionHandler {
+public class AuthExceptionhandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UsernameNotFoundException.class)
-    public ResponseEntity<String> handleUsernameNotFoundException(UsernameNotFoundException ex) {
-        //TODO("Implement specific handler logic")
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+    public ResponseEntity<ExceptionResponse> handleUsernameNotFoundException(UsernameNotFoundException ex) {
+        ExceptionResponse er = new ExceptionResponse(System.currentTimeMillis(), ex.getMessage());
+        return new ResponseEntity<>(er, HttpStatus.NOT_FOUND);
     }
 }

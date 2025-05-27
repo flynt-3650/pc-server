@@ -22,9 +22,10 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Valid @RequestBody LoginRegDto registrationDto) {
+    public ResponseEntity<JwtResponseDto> register(@Valid @RequestBody LoginRegDto registrationDto) {
         userService.registerUser(registrationDto);
-        return ResponseEntity.ok().body("User registered successfully");
+        String token = userService.loginUser(registrationDto);
+        return ResponseEntity.ok(new JwtResponseDto(token));
     }
 
     @PostMapping("/login")
