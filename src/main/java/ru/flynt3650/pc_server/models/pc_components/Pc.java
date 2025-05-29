@@ -28,52 +28,52 @@ public class Pc {
     @Column(name = "price")
     private Double price;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cpu_id", referencedColumnName = "id")
     @NotNull(message = "Cpu is required")
     private Cpu cpu;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "gpu_id", referencedColumnName = "id")
     @NotNull(message = "Gpu is required")
     private Gpu gpu;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "motherboard_id", referencedColumnName = "id")
     @NotNull(message = "Motherboard is required")
     private Motherboard motherboard;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ram_id", referencedColumnName = "id")
     @NotNull(message = "Ram is required")
     private Ram ram;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ssd_id", referencedColumnName = "id")
     @NotNull(message = "Ssd is required")
     private Ssd ssd;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hdd_id", referencedColumnName = "id")
     @NotNull(message = "Hdd is required")
     private Hdd hdd;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "psu_id", referencedColumnName = "id")
     @NotNull(message = "Psu is required")
     private Psu psu;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "case_id", referencedColumnName = "id")
     @NotNull(message = "Case is required")
     private Casing casing;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cooling_system_id", referencedColumnName = "id")
     @NotNull(message = "Cooling system is required")
     private CoolingSystem coolingSystem;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "networking_id", referencedColumnName = "id")
     @NotNull(message = "Networking is required")
     private Networking networking;
@@ -84,9 +84,6 @@ public class Pc {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    /**
-     * Builder constructor excluding {@code id}.
-     */
     @Builder
     public Pc(
             String name,

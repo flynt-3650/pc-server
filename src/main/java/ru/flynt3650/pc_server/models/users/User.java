@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
+import ru.flynt3650.pc_server.models.cart.Cart;
 
 import java.util.Objects;
 

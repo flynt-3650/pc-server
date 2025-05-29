@@ -9,6 +9,7 @@ import ru.flynt3650.pc_server.dto.JwtResponseDto;
 import ru.flynt3650.pc_server.dto.LoginRegDto;
 import ru.flynt3650.pc_server.dto.UserDto;
 import ru.flynt3650.pc_server.models.users.Role;
+import ru.flynt3650.pc_server.models.users.User;
 import ru.flynt3650.pc_server.services.UserService;
 
 @RestController
@@ -39,9 +40,12 @@ public class AuthController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         String authority = authentication.getAuthorities().iterator().next().getAuthority();
+
+        User user = userService.findByEmail(currentPrincipalName);
         
         UserDto userDto = new UserDto();
-        userDto.setEmail(currentPrincipalName);
+        userDto.setId(user.getId());
+        userDto.setEmail(user.getEmail());
         userDto.setRole(Role.valueOf(authority));
 
         return userDto;

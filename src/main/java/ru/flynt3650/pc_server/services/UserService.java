@@ -10,6 +10,8 @@ import ru.flynt3650.pc_server.models.users.User;
 import ru.flynt3650.pc_server.repositories.UserRepository;
 import ru.flynt3650.pc_server.security.JwtUtil;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -45,5 +47,24 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid credentials");
         }
         return jwtUtil.generateToken(user.getEmail(), user.getRole().name()); // reply w/ token
+    }
+
+    public User findByEmail(String email) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        }
+
+        throw new RuntimeException("User not found");
+    }
+
+    public User findById(Integer id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+
+        if (optionalUser.isPresent()) {
+            return optionalUser.get();
+        }
+
+        throw new RuntimeException("User not found");
     }
 }

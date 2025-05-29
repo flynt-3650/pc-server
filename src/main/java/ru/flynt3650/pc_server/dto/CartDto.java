@@ -12,7 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CartDto {
     private CartIdDto id;
+
     private PcDto pc;
+
     private UserDto user;
+
     private Integer quantity;
 }

@@ -11,9 +11,11 @@ import ru.flynt3650.pc_server.models.users.Role;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {
-    @NotNull
-    String email;
+    private Integer id;
 
     @NotNull
-    Role role;
+    private String email;
+
+    @NotNull
+    private Role role;
 }
